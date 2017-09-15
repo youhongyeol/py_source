@@ -30,20 +30,18 @@ x_test, t_test = data_setting(test_data)
 x_train, t_train = np.array(x_train), np.array(t_train)
 x_test, t_test = np.array(x_test), np.array(t_test)
 
-# 미니 배치
-train_mask = np.random.choice(x_train.shape[0], 1000)
-test_mask = np.random.choice(x_test.shape[0], 100)
-
-x_train, t_train = x_train[train_mask], t_train[train_mask]
-x_test, t_test = x_test[test_mask], t_test[test_mask]
-# print(len(x_train))
+# 원하는 수의 데이터만 배치
+x_train, t_train = x_train[:100], t_train[:100]
+x_test, t_test = x_test[:100], t_test[:100]
 
 print('데이터 로드 완료!')
+
+print(len(x_train))
 
 # 하이퍼 파라미터!
 learning_rate = 0.001
 training_epochs = 20
-batch_size = 100
+batch_size = 10
 
 class Model:
     def __init__(self, sess, name):
